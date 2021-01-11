@@ -1,4 +1,4 @@
 export default {
-    API_SERVER: "http://localhost:28536/api",
+    API_SERVER: "http://192.168.211.131:80/api",
   };
   

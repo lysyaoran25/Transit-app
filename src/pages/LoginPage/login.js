@@ -7,7 +7,10 @@ import {LoginAction} from '../../actions/login_action';
 import {color} from 'react-native-reanimated';
 import {center, px20} from '../../assets/style/style';
 import {State} from 'react-native-gesture-handler';
+import {useNavigation} from '@react-navigation/native';
+
 const Login = (props) => {
+  const navigation = useNavigation();
   const [Username, setUsername] = useState('');
   const [Password, setPassword] = useState('');
   const LOGIN = () => {
@@ -15,7 +18,7 @@ const Login = (props) => {
       username: Username,
       password: Password,
     };
-    props.Login(data);
+    props.Login(data).then((res) => navigation.navigate('Tab'));
   };
   return (
     <View style={styles.LoginView}>

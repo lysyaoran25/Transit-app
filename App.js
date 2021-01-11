@@ -15,16 +15,51 @@ import Login from './src/pages/LoginPage/login';
 import {connect} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+const Tab = createMaterialBottomTabNavigator();
+
+function BottomTab() {
+  return (
+    <Tab.Navigator
+      initialRouteName="Home"
+      activeColor="#FFFFFF"
+      inactiveColor="#50C594">
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarColor: '#50C594',
+          tabBarIcon: ({color}) => (
+            <Icon name="home" size={24} color="#FFF" />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Map"
+        component={Test}
+        options={{
+          tabBarLabel: 'Map',
+          tabBarColor: '#50C594',
+          tabBarIcon: ({color}) => (
+            <Icon name="map" size={24} color="#FFF" />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+const Stack = createStackNavigator();
 
 const App: () => React$Node = (props) => {
-  const Stack = createStackNavigator();
-  const initRoute = props.loginreducer.userid != 0 ? 'Home' : 'Login';
+  const initRoute = props.loginreducer.userid != 0 ? 'Login' : 'Tab';
   return (
     <NavigationContainer>
       <Stack.Navigator headerMode="none" initialRouteName={initRoute}>
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Test" component={Test} />
+        <Stack.Screen name="Tab" component={BottomTab} />
       </Stack.Navigator>
     </NavigationContainer>
   );
