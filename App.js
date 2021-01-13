@@ -12,42 +12,20 @@ import Home from './src/pages/HomePage/home';
 import Test from './src/pages/test';
 import Login from './src/pages/LoginPage/login';
 
+import MyTabBar from './src/components/tabbar';
 import {connect} from 'react-redux';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-const Tab = createMaterialBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 function BottomTab() {
   return (
-    <Tab.Navigator
-      initialRouteName="Home"
-      activeColor="#FFFFFF"
-      inactiveColor="#50C594">
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{
-          tabBarLabel: 'Home',
-          tabBarColor: '#50C594',
-          tabBarIcon: ({color}) => (
-            <Icon name="home" size={24} color="#FFF" />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Map"
-        component={Test}
-        options={{
-          tabBarLabel: 'Map',
-          tabBarColor: '#50C594',
-          tabBarIcon: ({color}) => (
-            <Icon name="map" size={24} color="#FFF" />
-          ),
-        }}
-      />
+    <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Map" component={Test} />
     </Tab.Navigator>
   );
 }
