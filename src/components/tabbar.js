@@ -67,7 +67,6 @@ const MyTabBar = ({state, descriptors, navigation}) => {
             ]}>
             <Icon
               name={label.toLowerCase()}
-              onPress={onPress}
               size={24}
               color={isFocused ? '#ffffff' : '#50C594'}
             />
