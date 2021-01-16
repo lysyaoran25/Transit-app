@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {connect} from 'react-redux';
 import {LoginAction} from '../../actions/login_action';
 import {color} from 'react-native-reanimated';
-import {center, px20} from '../../assets/style/style';
 import {State} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
 
@@ -55,13 +54,13 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   LoginButton: {
-    marginLeft: px20,
-    marginRight: px20,
+    marginLeft: 20,
+    marginRight: 20,
     marginTop: 30,
   },
   LoginField: {
-    marginLeft: px20,
-    marginRight: px20,
+    marginLeft: 20,
+    marginRight: 20,
   },
 });
 

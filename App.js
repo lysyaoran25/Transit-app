@@ -32,7 +32,7 @@ function BottomTab() {
 const Stack = createStackNavigator();
 
 const App: () => React$Node = (props) => {
-  const initRoute = props.loginreducer.userid != 0 ? 'Login' : 'Tab';
+  const initRoute = props.loginreducer.userid == 0  ? 'Login' : 'Tab';
   return (
     <NavigationContainer>
       <Stack.Navigator headerMode="none" initialRouteName={initRoute}>
