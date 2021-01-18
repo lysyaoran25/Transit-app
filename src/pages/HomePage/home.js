@@ -1,15 +1,16 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 
 import {View, Text, StyleSheet, FlatList, Dimensions} from 'react-native';
 import {Input, Item} from 'native-base';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import FronAwesome from 'react-native-vector-icons/FontAwesome';
 
-import {HeaderBar, ListItem} from '../../components/index';
+import {HeaderBar} from '../../components/index';
+import ListItem from '../../components/ListItem';
 
 const window = Dimensions.get('window');
 
-const data = [
+const template = [
   {
     id: 1,
     name: 'Item 1',
@@ -173,20 +174,28 @@ const data = [
 ];
 
 export const Home = ({navigation}) => {
+  var [data, UpdateData] = useState(template);
   let renderItem = useCallback(({item}) => <ListItem item={item} />, []);
 
   let getItemLayout = (data, index) => ({
-    length: window.width / 5,
-    offset: (window.width / 5) * index,
+    length: window.width / 3,
+    offset: (window.width / 3) * index,
     index,
   });
 
+  let loadmore = () => {
+    var length = data.length;
+    if (length < 50) {
+      let add = {id: length + 1, name: 'item41'};
+      UpdateData([...data, add]);
+    }
+  };
   let KeyExtractor = useCallback((item) => item.id.toString(), []);
   return (
     <View style={styles.home_view}>
       <HeaderBar Title="Home" />
       <Item rounded style={styles.home_item}>
-        <Icon
+        <FronAwesome
           name="search"
           size={24}
           color="#50C594"
@@ -197,11 +206,13 @@ export const Home = ({navigation}) => {
       <FlatList
         data={data}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id.toString()}
-        initialNumToRender={10}
+        keyExtractor={KeyExtractor}
+        initialNumToRender={9}
         getItemLayout={getItemLayout}
         removeClippedSubviews
-        maxToRenderPerBatch={10}
+        maxToRenderPerBatch={9}
+        windowSize={3}
+        onEndReached={loadmore}
       />
     </View>
   );

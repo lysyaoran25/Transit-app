@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const {width} = Dimensions.get('screen');
 const button = {
@@ -65,7 +65,7 @@ const MyTabBar = ({state, descriptors, navigation}) => {
                 ? styles.button_end
                 : styles.tab_button,
             ]}>
-            <Icon
+            <FontAwesome
               name={label.toLowerCase()}
               size={24}
               color={isFocused ? '#ffffff' : '#50C594'}

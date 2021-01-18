@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Text, StyleSheet, View} from 'react-native';
 import {Button, Item, Input} from 'native-base';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {connect} from 'react-redux';
 import {LoginAction} from '../../actions/login_action';
 import {color} from 'react-native-reanimated';
