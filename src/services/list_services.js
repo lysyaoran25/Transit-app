@@ -1,13 +1,13 @@
 import {API} from './api';
 
-export const LoginServices = {
+export const ListServices = {
   GetData,
 };
 
 // our put method that uses our backend api
 // to create new query into our data base*
 
-function GetData(data) {
-  let url = '/list';
-  return API.get(url, data, {});
+function GetData() {
+  let url = '/getThongTinKhachHang';
+  return API.get(url, {}, {});
 }

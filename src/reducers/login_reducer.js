@@ -1,6 +1,6 @@
 const login_reducer = (
   state = {
-    userid: 1,
+    userid: 0,
     username: '',
     status: '',
   },

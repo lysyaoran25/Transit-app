@@ -1,11 +1,12 @@
-import {ListService} from '../services/list_services';
+import {ListServices} from '../services/list_services';
 
 export const ListAction = {
   GetData,
 };
-function GetData(data) {
+function GetData() {
   return (dispatch) => {
-    return ListService.GetData(data).then(function (response) {
+    return ListServices.GetData().then(function (response) {
+      console.log(response);
       if (response.Status === 200) {
         dispatch(success('success', response));
         return response;
