@@ -6,7 +6,6 @@ export const ListAction = {
 function GetData() {
   return (dispatch) => {
     return ListServices.GetData().then(function (response) {
-      console.log(response);
       if (response.Status === 200) {
         dispatch(success('success', response));
         return response;

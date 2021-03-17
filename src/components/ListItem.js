@@ -15,7 +15,7 @@ export default class ListItem extends PureComponent {
         <Card style={styles.listitem_carditem}>
           <CardItem style={styles.listitem_carditem}>
             <Left>
-              <FastImage
+              {/* <FastImage
                 style={{...imagecircle}}
                 source={{
                   uri:
@@ -23,14 +23,14 @@ export default class ListItem extends PureComponent {
                   priority: FastImage.priority.normal,
                 }}
                 resizeMode={FastImage.resizeMode.stretch}
-              />
+              /> */}
               <Body>
                 <View style={{flex: 1, flexDirection: 'row'}}>
                   <View style={{width: '80%'}}>
                     <Text style={{color: '#78B4B4'}}>
-                      {this.props.item.name}
+                      {this.props.item.diachi}
                     </Text>
-                    <Text style={styles.listitem_phone}>966662918</Text>
+                    <Text style={styles.listitem_phone}>{this.props.item.sdt}</Text>
                   </View>
                   <View
                     style={{

@@ -1,4 +1,4 @@
 export default {
-    API_SERVER: "http://192.168.24.1:80/api",
+    API_SERVER: "http://10.0.3.2:80/api",
   };
   

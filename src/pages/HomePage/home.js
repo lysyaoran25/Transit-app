@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useState,useEffect} from 'react';
 
 import {View, Text, StyleSheet, FlatList, Dimensions} from 'react-native';
 import {Input, Item} from 'native-base';
@@ -12,48 +12,45 @@ import {ListAction} from '../../actions/list_action';
 const window = Dimensions.get('window');
 var temp = [
   {
-    id: 1,
-    name: 'Item 1',
+      "id": 1,
+      "diachi": "yên thế Đường 1 Phường 3 Phường 3  Khu vực 2 ",
+      "sdt": null,
+      "soghe": 3
   },
   {
-    id: 2,
-    name: 'Item 2',
+      "id": 2,
+      "diachi": "yên thế, tân bình  Phường 5  Khu vực 3 ",
+      "sdt": "0568370350",
+      "soghe": 1
   },
   {
-    id: 3,
-    name: 'Item 3',
+      "id": 16,
+      "diachi": "yên th? Đường 1 Phường 3 Phường 5  Khu vực 3 ",
+      "sdt": "966662918",
+      "soghe": 3
   },
   {
-    id: 4,
-    name: 'Item 4',
+      "id": 17,
+      "diachi": "yên th? Đường 1 Phường 3 Phường 5  Khu vực 3 ",
+      "sdt": "966662918",
+      "soghe": 3
   },
   {
-    id: 5,
-    name: 'Item 5',
+      "id": 18,
+      "diachi": "tan binh Đường 1 Phường 3 Phường 5  Khu vực 3 ",
+      "sdt": "966662918",
+      "soghe": 4
   },
   {
-    id: 6,
-    name: 'Item 6',
-  },
-  {
-    id: 7,
-    name: 'Item 7',
-  },
-  {
-    id: 8,
-    name: 'Item 8',
-  },
-  {
-    id: 9,
-    name: 'Item 9',
-  },
-  {
-    id: 10,
-    name: 'Item 10',
-  },
+      "id": 19,
+      "diachi": "bach dang Đường 1 Phường 3 Phường 5  Khu vực 3 ",
+      "sdt": "966662918",
+      "soghe": 5
+  }
 ];
 export const Home = (props, {navigation}) => {
-  var [data, UpdateData] = useState(props.listreducer.data);
+  var [data, UpdateData] = useState([]);
+
   let renderItem = useCallback(({item}) => <ListItem item={item} />, []);
 
   let getItemLayout = (data, index) => ({
@@ -66,10 +63,18 @@ export const Home = (props, {navigation}) => {
     var length = data.length;
     if (length < 50) {
       let add = {id: length + 1, name: 'item41'};
-      UpdateData([...data, add]);
+      //UpdateData([...data, add]);
     }
   };
+
   let KeyExtractor = useCallback((item) => item.id.toString(), []);
+
+  useEffect(()=>{
+    console.log(1);
+    props.GetData()
+    UpdateData(props.listreducer.data);
+  },[])
+
   return (
     <View style={styles.home_view}>
       <HeaderBar Title="Home" />
